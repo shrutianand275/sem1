@@ -1,0 +1,170 @@
+/* =========================
+   GLOBAL RESET (CRITICAL)
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* =========================
+   FIXED HEADER
+========================= */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background: rgba(13, 71, 161, 0.95);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+}
+
+/* Header inner (same math as content/footer) */
+.header-inner {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =========================
+   BODY OFFSET FOR FIXED HEADER
+   (THIS SOLVES OVERLAP 100%)
+========================= */
+body::before {
+  content: "";
+  display: block;
+  height: 64px;
+}
+
+/* =========================
+   HEADER CONTENT
+========================= */
+.logo {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.header-center {
+  flex: 1;
+  text-align: center;
+  color: #e3f2fd;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================
+   PAGE CONTENT
+========================= */
+.page-content {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  padding: 2rem 1rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  width: 100%;
+  background: #1b6492;
+  border-top: 2px solid #021223;
+  color: #efdfdf;
+}
+
+/* Footer inner (same math again) */
+.footer-content {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  padding: 2rem 1rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+/* =========================
+   FOOTER SECTIONS
+========================= */
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1 1 250px;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-left h3,
+.footer-right h4 {
+  color: #fff;
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.social-icons a {
+  color: #ddd;
+  font-size: 1.2rem;
+}
+
+/* =========================
+   MOBILE FIXES
+========================= */
+@media (max-width: 768px) {
+
+  .header-inner {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  body::before {
+    height: 104px; /* header grows on mobile */
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-content {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
